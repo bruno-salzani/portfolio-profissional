@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 import { PROJECTS } from '../constants';
 
 export const Projects: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'All' | 'QA' | 'Other'>('All');
+  const [activeTab, setActiveTab] = useState<'All' | 'QA' | 'Web' | 'Other'>('All');
 
   const filteredProjects = PROJECTS.filter(p => activeTab === 'All' || p.category === activeTab);
 
   const getGenericDescription = (category: string) => {
     switch(category) {
       case 'QA': return 'Implementação moderna com foco em estratégias de teste automatizado, desenvolvida com abordagem AI-Driven para máxima eficiência e cobertura.';
+      case 'Web': return 'Desenvolvimento de interfaces modernas e responsivas utilizando as melhores práticas de arquitetura e performance web.';
       default: return 'Projeto diversificado explorando novas tecnologias, cibersegurança e desenvolvimento especializado com suporte de IA avançada.';
     }
   };
@@ -17,7 +18,7 @@ export const Projects: React.FC = () => {
   return (
     <div className="w-full">
       <div className="flex flex-wrap justify-center gap-3 mb-16">
-        {(['All', 'QA', 'Other'] as const).map((tab) => (
+        {(['All', 'QA', 'Web', 'Other'] as const).map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
@@ -27,7 +28,7 @@ export const Projects: React.FC = () => {
               : 'bg-white/5 border-white/10 text-slate-500 hover:text-white hover:bg-white/10'
             }`}
           >
-            {tab === 'All' ? 'VER TODOS' : tab === 'QA' ? 'QUALIDADE / QA' : 'OUTROS'}
+            {tab === 'All' ? 'VER TODOS' : tab === 'QA' ? 'QUALIDADE / QA' : tab === 'Web' ? 'DESENVOLVIMENTO WEB' : 'OUTROS'}
           </button>
         ))}
       </div>
@@ -50,15 +51,19 @@ export const Projects: React.FC = () => {
             <div className="relative z-10 h-full flex flex-col">
               <div className="flex justify-between items-start mb-6">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all group-hover:scale-110 shadow-lg ${
+                  project.title.toLowerCase().includes('assistant') || project.title.toLowerCase().includes('ai') ? 'bg-fuchsia-500/10 text-fuchsia-400' :
                   project.title.toLowerCase().includes('mobile') || project.title.toLowerCase().includes('appium') ? 'bg-amber-500/10 text-amber-400' :
                   project.title.toLowerCase().includes('api') ? 'bg-rose-500/10 text-rose-400' :
                   project.category === 'QA' ? 'bg-purple-500/10 text-purple-400' : 
+                  project.category === 'Web' ? 'bg-blue-500/10 text-blue-400' :
                   'bg-emerald-500/10 text-emerald-400'
                 }`}>
                   <i className={`ph ${
+                    project.title.toLowerCase().includes('assistant') || project.title.toLowerCase().includes('ai') ? 'ph-sparkle' :
                     project.title.toLowerCase().includes('mobile') || project.title.toLowerCase().includes('appium') ? 'ph-device-mobile' :
                     project.title.toLowerCase().includes('api') ? 'ph-plugs-connected' :
                     project.category === 'QA' ? 'ph-check-square-offset' : 
+                    project.category === 'Web' ? 'ph-globe' :
                     'ph-cube'
                   } text-xl`}></i>
                 </div>

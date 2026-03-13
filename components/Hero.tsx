@@ -50,7 +50,8 @@ export const Hero: React.FC = () => {
               LINKEDIN
             </a>
             <a 
-              href="./curriculo.pdf" 
+              href="/curriculo.pdf" 
+              download="Curriculo_Bruno_Salzani.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 px-6 py-3.5 bg-transparent border border-white/10 text-white rounded-full text-xs font-black tracking-widest transition-all hover:bg-white/5 hover:border-white/20 active:scale-95"

@@ -2,23 +2,117 @@
 import { Project, Certification, Experience } from './types';
 
 export const PROJECTS: Project[] = [
+  // AI (Categorized as Other per user request)
+  { title: "OpenClaw Assistant: AI Autonomous Operating System", date: "02/2026", link: "https://github.com/bruno-salzani/openclaw-assistant", category: "Other" },
+  { title: "LangGraph Assistant: AI Operating System (AI-OS)", date: "01/2026", link: "https://github.com/bruno-salzani/langgraph-assistant", category: "Other" },
+
   // QA
-  { title: "OmniMobile Automation Framework (Appium + Java)", date: "03/2026", link: "https://github.com/bruno-salzani/test-automation-appium-saucelabs", category: "QA" },
-  { title: "Test Automation – Booking.com (Selenium & Resilience4j)", date: "02/2026", link: "https://github.com/bruno-salzani/booking-resilience-selenium-java", category: "QA" },
-  { title: "Test Automation - Ecommerce Playground (Selenium Java))", date: "01/2026", link: "https://github.com/bruno-salzani/ecommerce-selenium-java", category: "QA" },
-  { title: "Test Automation - Dashboard Engine (Selenium + Java)", date: "12/2025", link: "https://github.com/bruno-salzani/dashboard-selenium-java", category: "QA" },
-  { title: "API Test Automation – ServeRest (Playwright + TypeScript)", date: "10/2025", link: "https://github.com/bruno-salzani/serverest-api-playwright-automation", category: "QA" },
-  { title: "API Test – Trello Management (Playwright))", date: "08/2025", link: "https://github.com/bruno-salzani/trello-management-api-playwright", category: "QA" },
-  { title: "Test Automation – Petstore API (Rest Assured)", date: "06/2025", link: "https://github.com/bruno-salzani/petstore-api-playwright-automation", category: "QA" },
-  { title: "Test Automation - SPA Auctions Platform (Selenium)", date: "01/2025", link: "https://github.com/bruno-salzani/automation-selenium-leiloes", category: "QA" },
-  { title: "Test Automation - Adopet SPA (Cypress)", date: "12/2024", link: "https://github.com/bruno-salzani/automation-cypress-adopet", category: "QA" },
-  { title: "QA Strategy & Testing - Neolude LMS (Web & Mobile)", date: "05/2024", link: "https://github.com/bruno-salzani/neolude-lms-web-app-qa", category: "QA" },
-  { title: "QA Testing - Natura Gamification Platform (Web)", date: "03/2024", link: "https://github.com/bruno-salzani/natura-gamification-web-qa", category: "QA" },
-  { title: "Test Automation - Neolude LMS Platform (Cypress)", date: "02/2024", link: "https://github.com/bruno-salzani/neolude-lms-e2e-cypress", category: "QA" },
-  { title: "Mobile QA Testing - Prudential LMS App", date: "12/2023", link: "https://github.com/bruno-salzani/prudential-lms-mobile-qa", category: "QA" },
+  { 
+    title: "OmniMobile Automation Framework (Appium + Java)", 
+    date: "03/2026", 
+    link: "https://github.com/bruno-salzani/test-automation-appium-saucelabs", 
+    category: "QA",
+    description: "Plataforma mobile Enterprise de alta performance e máxima resiliência. Utiliza Java 21 e Appium sob arquitetura limpa para mitigar flakiness e garantir escalabilidade na automação de fluxos críticos de negócio."
+  },
+  { 
+    title: "Test Automation – Booking.com (Selenium & Resilience4j)", 
+    date: "01/2026", 
+    link: "https://github.com/bruno-salzani/booking-resilience-selenium-java", 
+    category: "QA",
+    description: "Automação E2E resiliente para fluxos críticos de busca e reserva. Integra Selenium 4 com Resilience4j para mitigar flakiness e instabilidade. Utiliza Testcontainers para infra efêmera e técnicas avançadas de anti-bot."
+  },
+  { 
+    title: "Test Automation - Ecommerce Playground (Selenium Java)", 
+    date: "12/2025", 
+    link: "https://github.com/bruno-salzani/ecommerce-selenium-java", 
+    category: "QA",
+    description: "Suíte E2E de nível elite com arquitetura híbrida (API + UI) e Selenium 4. Implementa Self-Healing e API Seeding para reduzir o tempo de execução em 40% e garantir resiliência total contra seletores instáveis e flakiness na UI."
+  },
+  { 
+    title: "Test Automation - Dashboard Engine (Selenium + Java)", 
+    date: "10/2025", 
+    link: "https://github.com/bruno-salzani/dashboard-selenium-java", 
+    category: "QA",
+    description: "Automação E2E híbrida para sistemas corporativos complexos (Selenium + API). Otimiza o setup de dados via REST, reduzindo o tempo de execução em até 70% com infraestrutura efêmera em Docker via Testcontainers e JUnit 5."
+  },
+  { 
+    title: "API Test Automation – ServeRest (Playwright + TypeScript)", 
+    date: "07/2025", 
+    link: "https://github.com/bruno-salzani/serverest-api-playwright-automation", 
+    category: "QA",
+    description: "Automação de APIs híbrida (Playwright/TypeScript + RestAssured/Java). Validação rigorosa de contratos via JSON Schema com Drift Detection, fail-fast de ambiente via Zod e pipeline integrado com Allure e k6."
+  },
+  { 
+    title: "API Test – Trello Management (Playwright)", 
+    date: "06/2025", 
+    link: "https://github.com/bruno-salzani/trello-management-api-playwright", 
+    category: "QA",
+    description: "Automação de API de alto nível com Playwright, focada em SLAs e Resiliência. Possui injeção de caos, monitoramento de métricas (p95) via InfluxDB/CSV e Drift Detection para garantir paridade total com o contrato do Trello."
+  },
+  { 
+    title: "Test Automation – Petstore API (Rest Assured)", 
+    date: "03/2025", 
+    link: "https://github.com/bruno-salzani/petstore-api-playwright-automation", 
+    category: "QA",
+    description: "Automação de API robusta (RestAssured) com arquitetura em camadas e Clean Code. Integra testes de contrato (WireMock), performance (Gatling) e mutação (PITest) em um pipeline CI/CD avançado com Quality Gates (SonarCloud) e CodeQL."
+  },
+  { 
+    title: "Test Automation - SPA Auctions Platform (Selenium)", 
+    date: "01/2025", 
+    link: "https://github.com/bruno-salzani/automation-selenium-leiloes", 
+    category: "QA",
+    description: "Automação E2E para plataforma de leilões utilizando Selenium e JUnit 5. Implementa o padrão Page Objects para isolar a lógica de UI e garantir alta manutenibilidade em fluxos críticos de autenticação e cadastro de itens."
+  },
+  { 
+    title: "Test Automation - Adopet SPA (Cypress)", 
+    date: "12/2024", 
+    link: "https://github.com/bruno-salzani/automation-cypress-adopet", 
+    category: "QA",
+    description: "Automação E2E híbrida (UI + API) para SPA utilizando Cypress e JavaScript. Implementa comandos customizados e Page Objects com seletores estáveis, garantindo feedback rápido e relatórios detalhados via Mochawesome."
+  },
+  { 
+    title: "QA Strategy & Testing - Neolude LMS (Web & Mobile)", 
+    date: "05/2024", 
+    link: "https://github.com/bruno-salzani/neolude-lms-web-app-qa", 
+    category: "QA",
+    description: "Estratégia de QA multiplataforma (Web, Mobile e API) para sistema de LMS. Validação de fluxos complexos de gamificação e integridade de dados entre camadas com Postman e SoapUI, utilizando Jira e Redmine para gestão de defeitos."
+  },
+  { 
+    title: "QA Testing - Natura Gamification Platform (Web)", 
+    date: "03/2024", 
+    link: "https://github.com/bruno-salzani/natura-gamification-web-qa", 
+    category: "QA",
+    description: "Garantia de qualidade para plataforma de gamificação multiplataforma (Web/Mobile). Validação de integridade de dados entre LMS e Frontend, com testes de API focados em performance e fidelidade dos elementos de gamificação via Postman."
+  },
+  { 
+    title: "Test Automation - Neolude LMS Platform (Cypress)", 
+    date: "02/2024", 
+    link: "https://github.com/bruno-salzani/neolude-lms-e2e-cypress", 
+    category: "QA",
+    description: "Automação RPA baseada em Cypress para provisionamento em massa de dados no LMS. Realiza a conversão Excel-to-JSON para criação automatizada de cursos em lote, eliminando erros manuais e reduzindo o tempo de implantação operacional."
+  },
+  { 
+    title: "Mobile QA Testing - Prudential LMS App", 
+    date: "12/2023", 
+    link: "https://github.com/bruno-salzani/prudential-lms-mobile-qa", 
+    category: "QA",
+    description: "Estratégia de QA Mobile para aplicativo educacional nativo (iOS/Android). Validação cross-platform focada em fragmentação Android e sincronização de dados, com aplicação de Matriz de Rastreabilidade (RTM) e redução de 40% de bugs críticos."
+  },
+
+  // Web Development
+  { title: "AeroMaintain Pro (React + Node.js + Clean Architecture)", date: "01/2026", link: "https://github.com/bruno-salzani/aeromaintain-pro", category: "Web" },
+  { title: "Borges Captações - (HTML5 + CSS3)", date: "06/2025", link: "https://github.com/bruno-salzani/borges-captacoes", category: "Web" },
+  { title: "Stargames Informática (Vite + Web Components)", date: "05/2025", link: "https://github.com/bruno-salzani/stargames-informatica", category: "Web" },
+  { title: "Clínica Nova Vida - Modern Web Platform", date: "04/2025", link: "https://github.com/bruno-salzani/clinica-novavida/", category: "Web" },
+  { title: "MinifyCSS (Staff Engineer Edition)", date: "03/2023", link: "https://github.com/bruno-salzani/minifycss", category: "Web" },
+  { title: "Binary to Decimal (Staff Engineer Review Edition)", date: "01/2023", link: "https://github.com/bruno-salzani/bin2dec", category: "Web" },
+  { title: "Blog Terceira Idade (Vue.js + TailwindCSS)", date: "08/2021", link: "https://github.com/bruno-salzani/blog-terceira-idade", category: "Web" },
+  { title: "Projeto Terceira Idade", date: "06/2021", link: "https://github.com/bruno-salzani/terceira-idade", category: "Web" },
+  { title: "HTML Presentation / Portfolio (HTML5 + CSS3)", date: "04/2021", link: "https://github.com/bruno-salzani/html-presentation", category: "Web" },
+  { title: "Barbershop Alura - Elite Frontend Architecture", date: "03/2021", link: "https://github.com/bruno-salzani/html-barbershop", category: "Web" },
 
   // Other
-  { title: "SentinelKit - Cibersegurança", date: "01/2026", link: "https://github.com/bruno-salzani/SentinelKit/tree/main", category: "Other" },
+  { title: "SentinelKit - Cibersegurança", date: "12/2025", link: "https://github.com/bruno-salzani/SentinelKit/tree/main", category: "Other" },
 ];
 
 export const CERTIFICATIONS: Certification[] = [
@@ -93,8 +187,8 @@ export const CERTIFICATIONS: Certification[] = [
 
 export const TECH_STACK = {
   languages: ["TypeScript", "JavaScript", "Java", "C# / .NET", "Python", "Node.js", "Vue.js", "SQL", "HTML5 / CSS3"],
-  automation: ["Selenium", "Cypress", "Playwright", "Appium", "BDD / Cucumber", "Rest Assured", "Resilience4j"],
-  tools: ["Postman / Insomnia", "JMeter", "Allure Reports", "SonarQube", "SEO", "HTTP Fundamentals", "Bootstrap", "Excel Avançado"],
+  automation: ["Selenium", "Cypress", "Playwright", "Appium", "BDD / Cucumber", "Gherkin", "Rest Assured", "Resilience4j"],
+  tools: ["Postman / Insomnia", "JMeter", "Allure Reports", "SonarQube", "Jira / Redmine", "SEO", "HTTP Fundamentals", "Bootstrap", "Excel Avançado"],
   devops: ["Azure DevOps", "GitHub Actions", "GitLab CI", "Git / GitHub", "Docker", "CI/CD Pipelines"],
   agile: ["Scrum / Kanban", "Liderança & Feedback", "Gestão de Bugs", "MDS / Documentação", "QA Strategy", "Shift-left Testing"],
   ai: ["Desenvolvimento Orientado a IA", "Engenharia de Prompt Avançada", "IA Generativa (LLMs)", "GitHub Copilot Mastery", "ChatGPT & Claude", "Automação de Workflow com IA"]
