@@ -7,9 +7,11 @@ import { Experience } from './components/Experience';
 import { Certifications } from './components/Certifications';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { LanguageProvider, useLanguage } from './LanguageContext';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,8 +31,8 @@ const App: React.FC = () => {
         <section id="skills" className="py-24 px-4 scroll-mt-24">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col items-center mb-16">
-              <span className="text-blue-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">Especialidades</span>
-              <h2 className="text-4xl md:text-5xl font-black text-center gradient-text">Habilidades Técnicas</h2>
+              <span className="text-blue-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">{t('skills.subtitle')}</span>
+              <h2 className="text-4xl md:text-5xl font-black text-center gradient-text">{t('skills.title')}</h2>
             </div>
             <Skills />
           </div>
@@ -39,8 +41,8 @@ const App: React.FC = () => {
         <section id="experience" className="py-24 px-4 scroll-mt-24">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col items-center mb-16">
-              <span className="text-blue-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">Trajetória</span>
-              <h2 className="text-4xl md:text-5xl font-black text-center gradient-text">Experiência Profissional</h2>
+              <span className="text-blue-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">{t('experience.subtitle')}</span>
+              <h2 className="text-4xl md:text-5xl font-black text-center gradient-text">{t('experience.title')}</h2>
             </div>
             <Experience />
           </div>
@@ -50,8 +52,8 @@ const App: React.FC = () => {
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent"></div>
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col items-center mb-16">
-              <span className="text-purple-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">Portfólio</span>
-              <h2 className="text-4xl md:text-5xl font-black text-center gradient-text">Meus Projetos</h2>
+              <span className="text-purple-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">{t('projects.subtitle')}</span>
+              <h2 className="text-4xl md:text-5xl font-black text-center gradient-text">{t('projects.title')}</h2>
             </div>
             <Projects />
           </div>
@@ -61,8 +63,8 @@ const App: React.FC = () => {
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent"></div>
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col items-center mb-16">
-              <span className="text-green-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">Educação</span>
-              <h2 className="text-4xl md:text-5xl font-black text-center gradient-text">Certificações</h2>
+              <span className="text-green-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">{t('certifications.subtitle')}</span>
+              <h2 className="text-4xl md:text-5xl font-black text-center gradient-text">{t('certifications.title')}</h2>
             </div>
             <Certifications />
           </div>
@@ -71,6 +73,14 @@ const App: React.FC = () => {
 
       <Footer />
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 };
 

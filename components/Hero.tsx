@@ -1,7 +1,10 @@
 
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 export const Hero: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center pt-24 pb-16 px-4 overflow-hidden" aria-label="Introdução">
       {/* Elementos de Fundo com Blur Dinâmico */}
@@ -14,18 +17,17 @@ export const Hero: React.FC = () => {
         <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/5 border border-white/10 text-slate-300 text-xs font-bold uppercase tracking-widest mb-8 animate-in fade-in slide-in-from-left-4 duration-1000">
             <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true"></span>
-            7+ Anos de Experiência em Tecnologia
+            {t('hero.badge')}
           </div>
           
           <h1 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-[0.95] text-white animate-in fade-in slide-in-from-left-4 duration-1000 delay-150">
-            Qualidade em <br />
-            <span className="gradient-text">Cada Linha</span><br />
-            de Código.
+            {t('hero.title.1')} <br />
+            <span className="gradient-text">{t('hero.title.2')}</span><br />
+            {t('hero.title.3')}
           </h1>
           
           <p className="max-w-xl text-lg md:text-xl text-slate-400 mb-12 leading-relaxed animate-in fade-in slide-in-from-left-4 duration-1000 delay-300 font-medium">
-            Olá, sou <span className="text-white font-bold">Bruno Salzani</span>, Especialista em qualidade de software com 7+ anos de experiência em testes manuais e automação web.
-            Domino ferramentas como <span className="text-white">Cypress, Selenium e Appium</span> para garantir qualidade e agilidade em projetos complexos.
+            {t('hero.description')}
           </p>
 
           <div className="flex flex-wrap justify-center lg:justify-start gap-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
@@ -37,7 +39,7 @@ export const Hero: React.FC = () => {
               title="Ver perfil no GitHub"
             >
               <i className="ph ph-github-logo text-lg"></i>
-              GITHUB
+              {t('hero.cta.github')}
             </a>
             <a 
               href="https://www.linkedin.com/in/brunosalzani" 
@@ -47,33 +49,32 @@ export const Hero: React.FC = () => {
               title="Conectar no LinkedIn"
             >
               <i className="ph ph-linkedin-logo text-lg"></i>
-              LINKEDIN
+              {t('hero.cta.linkedin')}
             </a>
             <a 
-              href="/curriculo.pdf" 
-              download="Curriculo_Bruno_Salzani.pdf"
+              href={t('hero.resume_url')} 
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 px-6 py-3.5 bg-transparent border border-white/10 text-white rounded-full text-xs font-black tracking-widest transition-all hover:bg-white/5 hover:border-white/20 active:scale-95"
-              title="Baixar currículo"
+              title={t('hero.cta.resume')}
             >
               <i className="ph ph-file-pdf text-lg group-hover:scale-110 transition-transform"></i>
-              CURRÍCULO
+              {t('hero.cta.resume')}
             </a>
           </div>
           
           <div className="mt-16 grid grid-cols-3 gap-12 py-10 border-t border-white/5 w-full lg:w-auto animate-in fade-in duration-1000 delay-700">
             <div className="flex flex-col gap-1">
               <div className="text-4xl font-black text-white tracking-tighter">+7</div>
-              <div className="text-[9px] uppercase tracking-[0.2em] text-slate-500 font-bold">Anos de XP</div>
+              <div className="text-[9px] uppercase tracking-[0.2em] text-slate-500 font-bold">{t('hero.stats.years')}</div>
             </div>
             <div className="flex flex-col gap-1">
               <div className="text-4xl font-black text-white tracking-tighter">20+</div>
-              <div className="text-[9px] uppercase tracking-[0.2em] text-slate-500 font-bold">Projetos</div>
+              <div className="text-[9px] uppercase tracking-[0.2em] text-slate-500 font-bold">{t('hero.stats.projects')}</div>
             </div>
             <div className="flex flex-col gap-1">
               <div className="text-4xl font-black text-white tracking-tighter">50+</div>
-              <div className="text-[9px] uppercase tracking-[0.2em] text-slate-500 font-bold">Certificados</div>
+              <div className="text-[9px] uppercase tracking-[0.2em] text-slate-500 font-bold">{t('hero.stats.certs')}</div>
             </div>
           </div>
         </div>
@@ -84,13 +85,13 @@ export const Hero: React.FC = () => {
             {/* Brilho atrás da foto */}
             <div className="absolute -inset-8 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-[4rem] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
             
-            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[480px] lg:h-[480px] p-3 bg-[#0d0d0f] rounded-[4rem] shadow-2xl border border-white/10">
+            <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-[380px] lg:h-[380px] p-3 bg-[#0d0d0f] rounded-[3rem] shadow-2xl border border-white/10">
               {/* Background Grid clipped to container shape */}
-              <div className="absolute inset-0 overflow-hidden rounded-[4rem] pointer-events-none">
+              <div className="absolute inset-0 overflow-hidden rounded-[3rem] pointer-events-none">
                 <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]"></div>
               </div>
               
-              <div className="w-full h-full overflow-hidden rounded-[3.2rem] relative z-10">
+              <div className="w-full h-full overflow-hidden rounded-[2.4rem] relative z-10">
                 <img 
                   src="https://avatars.githubusercontent.com/u/61254239?v=4" 
                   alt="Foto de perfil de Bruno Salzani - Especialista em Automação (SDET)" 
@@ -100,22 +101,22 @@ export const Hero: React.FC = () => {
               </div>
               
               {/* Badges Flutuantes - Technical Style */}
-              <div className="absolute -right-8 top-1/4 glass px-4 py-3 rounded-xl border border-white/10 shadow-2xl animate-bounce hidden md:flex items-center gap-3 z-20" style={{animationDuration: '4s'}} aria-hidden="true">
+              <div className="absolute -right-4 top-1/4 glass px-4 py-3 rounded-xl border border-white/10 shadow-2xl animate-bounce hidden md:flex items-center gap-3 z-20" style={{animationDuration: '4s'}} aria-hidden="true">
                 <div className="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
                   <i className="ph ph-bug text-xl text-purple-400"></i>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[8px] uppercase tracking-widest text-slate-500 font-bold">Expertise</span>
+                  <span className="text-[8px] uppercase tracking-widest text-slate-500 font-bold">{t('hero.badge.expertise')}</span>
                   <span className="text-[10px] text-white font-black">QA AUTOMATION</span>
                 </div>
               </div>
 
-              <div className="absolute -left-8 bottom-1/4 glass px-4 py-3 rounded-xl border border-white/10 shadow-2xl animate-bounce hidden md:flex items-center gap-3 z-20" style={{animationDuration: '5s'}} aria-hidden="true">
+              <div className="absolute -left-4 bottom-1/4 glass px-4 py-3 rounded-xl border border-white/10 shadow-2xl animate-bounce hidden md:flex items-center gap-3 z-20" style={{animationDuration: '5s'}} aria-hidden="true">
                 <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
                   <i className="ph ph-shield-check text-xl text-blue-400"></i>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[8px] uppercase tracking-widest text-slate-500 font-bold">Foco</span>
+                  <span className="text-[8px] uppercase tracking-widest text-slate-500 font-bold">{t('hero.badge.focus')}</span>
                   <span className="text-[10px] text-white font-black">QUALITY ASSURANCE</span>
                 </div>
               </div>
@@ -125,8 +126,8 @@ export const Hero: React.FC = () => {
                   <i className="ph ph-brain text-2xl text-cyan-400"></i>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[9px] uppercase tracking-[0.2em] text-cyan-500 font-black">AI-DRIVEN DEVELOPMENT</span>
-                  <span className="text-[11px] text-white font-black">DOMÍNIO EM IA GENERATIVA</span>
+                  <span className="text-[9px] uppercase tracking-[0.2em] text-cyan-500 font-black">{t('hero.badge.ai')}</span>
+                  <span className="text-[11px] text-white font-black">{t('hero.badge.ai.desc')}</span>
                 </div>
               </div>
             </div>

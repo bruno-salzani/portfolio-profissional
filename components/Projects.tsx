@@ -1,17 +1,19 @@
 
 import React, { useState } from 'react';
 import { PROJECTS } from '../constants';
+import { useLanguage } from '../LanguageContext';
 
 export const Projects: React.FC = () => {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'All' | 'QA' | 'Web' | 'Other'>('All');
 
   const filteredProjects = PROJECTS.filter(p => activeTab === 'All' || p.category === activeTab);
 
   const getGenericDescription = (category: string) => {
     switch(category) {
-      case 'QA': return 'Implementação moderna com foco em estratégias de teste automatizado, desenvolvida com abordagem AI-Driven para máxima eficiência e cobertura.';
-      case 'Web': return 'Desenvolvimento de interfaces modernas e responsivas utilizando as melhores práticas de arquitetura e performance web.';
-      default: return 'Projeto diversificado explorando novas tecnologias, cibersegurança e desenvolvimento especializado com suporte de IA avançada.';
+      case 'QA': return t('projects.desc.qa');
+      case 'Web': return t('projects.desc.web');
+      default: return t('projects.desc.other');
     }
   };
 
@@ -28,7 +30,7 @@ export const Projects: React.FC = () => {
               : 'bg-white/5 border-white/10 text-slate-500 hover:text-white hover:bg-white/10'
             }`}
           >
-            {tab === 'All' ? 'VER TODOS' : tab === 'QA' ? 'QUALIDADE / QA' : tab === 'Web' ? 'DESENVOLVIMENTO WEB' : 'OUTROS'}
+            {tab === 'All' ? t('projects.filter.all') : tab === 'QA' ? t('projects.filter.qa') : tab === 'Web' ? t('projects.filter.web') : t('projects.filter.other')}
           </button>
         ))}
       </div>
@@ -75,12 +77,12 @@ export const Projects: React.FC = () => {
               </h4>
               
               <p className="text-xs text-slate-500 mb-6 line-clamp-3 leading-relaxed font-medium">
-                {project.description || getGenericDescription(project.category)}
+                {t(`project.${idx}.desc`) !== `project.${idx}.desc` ? t(`project.${idx}.desc`) : (project.description || getGenericDescription(project.category))}
               </p>
               
               <div className="mt-auto flex items-center justify-between">
                 <div className="flex items-center text-[10px] font-bold tracking-widest text-slate-400 group-hover:text-blue-400 transition-all uppercase">
-                  <span>Explorar Código</span>
+                  <span>{t('projects.explore')}</span>
                   <i className="ph ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                 </div>
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50 group-hover:bg-blue-500 group-hover:animate-pulse"></div>

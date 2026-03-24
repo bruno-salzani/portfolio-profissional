@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { TECH_STACK } from '../constants';
+import { useLanguage } from '../LanguageContext';
 
 export const Skills: React.FC = () => {
+  const { t } = useLanguage();
+
   const SkillCard = ({ title, items, colorClass, icon }: { title: string, items: string[], colorClass: string, icon: string }) => (
     <div className="glass p-6 rounded-2xl hover:translate-y-[-4px] transition-all duration-500 group card-gradient h-full relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:12px_12px]"></div>
@@ -29,37 +32,37 @@ export const Skills: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <SkillCard 
-        title="Linguagens" 
+        title={t('skills.languages')} 
         items={TECH_STACK.languages} 
         colorClass="text-blue-400" 
         icon="ph-code"
       />
       <SkillCard 
-        title="Automação" 
+        title={t('skills.automation')} 
         items={TECH_STACK.automation} 
         colorClass="text-purple-400" 
         icon="ph-robot"
       />
       <SkillCard 
-        title="Ferramentas & Infra" 
+        title={t('skills.tools')} 
         items={TECH_STACK.tools} 
         colorClass="text-emerald-400" 
         icon="ph-wrench"
       />
       <SkillCard 
-        title="Domínio em IA" 
+        title={t('skills.ai')} 
         items={TECH_STACK.ai} 
         colorClass="text-cyan-400" 
         icon="ph-brain"
       />
       <SkillCard 
-        title="CI/CD & DevOps" 
+        title={t('skills.cicd')} 
         items={TECH_STACK.devops} 
         colorClass="text-green-400" 
         icon="ph-rocket-launch"
       />
       <SkillCard 
-        title="Gestão & Estratégia" 
+        title={t('skills.management')} 
         items={TECH_STACK.agile} 
         colorClass="text-orange-400" 
         icon="ph-strategy"

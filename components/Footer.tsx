@@ -1,7 +1,10 @@
 
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 export const Footer: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="py-12 border-t border-slate-900 bg-[#0a0a0c]">
       <div className="max-w-6xl mx-auto px-4 text-center">
@@ -16,10 +19,10 @@ export const Footer: React.FC = () => {
         </div>
 
         <p className="text-slate-600 text-sm">
-          &copy; {new Date().getFullYear()} Bruno Salzani. Todos os direitos reservados.
+          &copy; {new Date().getFullYear()} Bruno Salzani. {t('footer.rights')}
         </p>
         <p className="text-slate-700 text-xs mt-2">
-          Desenvolvido com React, TypeScript e Tailwind CSS.
+          {t('footer.builtWith')}
         </p>
       </div>
     </footer>

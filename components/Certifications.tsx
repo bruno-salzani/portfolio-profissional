@@ -1,9 +1,23 @@
 
 import React, { useMemo, useState } from 'react';
 import { CERTIFICATIONS } from '../constants';
+import { useLanguage } from '../LanguageContext';
 
 export const Certifications: React.FC = () => {
+  const { t } = useLanguage();
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const getCategoryKey = (category: string) => {
+    switch(category) {
+      case 'Qualidade de Software': return 'category.qa';
+      case 'Automação de Testes': return 'category.automation';
+      case 'CI/CD': return 'category.cicd';
+      case 'HTML/CSS': return 'category.htmlcss';
+      case 'Programação': return 'category.programming';
+      case 'Habilidades Interpessoais': return 'category.softskills';
+      default: return 'category.others';
+    }
+  };
 
   const categories = useMemo(() => {
     const map = new Map<string, typeof CERTIFICATIONS>();
@@ -23,7 +37,7 @@ export const Certifications: React.FC = () => {
         {visibleCategories.map(([category, certs]) => (
           <div key={category} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="flex items-center gap-4 mb-8">
-              <h3 className="text-xl font-black text-white uppercase tracking-wider">{category}</h3>
+              <h3 className="text-xl font-black text-white uppercase tracking-wider">{t(getCategoryKey(category))}</h3>
               <div className="flex-1 h-px bg-white/10"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -39,7 +53,11 @@ export const Certifications: React.FC = () => {
                     <i className="ph ph-medal text-2xl text-blue-500"></i>
                   </div>
                   <div className="flex flex-col flex-1">
-                    <span className="text-sm font-black text-slate-200 group-hover:text-blue-400 transition-colors leading-tight mb-1">{cert.title}</span>
+                    <span className="text-sm font-black text-slate-200 group-hover:text-blue-400 transition-colors leading-tight mb-1">
+                      {t(`cert.${CERTIFICATIONS.indexOf(cert)}.title`) !== `cert.${CERTIFICATIONS.indexOf(cert)}.title` 
+                        ? t(`cert.${CERTIFICATIONS.indexOf(cert)}.title`) 
+                        : cert.title}
+                    </span>
                     <div className="flex items-center gap-2">
                       <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">{cert.issuer}</span>
                       <span className="w-1 h-1 rounded-full bg-slate-700"></span>
@@ -60,13 +78,13 @@ export const Certifications: React.FC = () => {
           className="group flex items-center gap-3 px-10 py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-black transition-all hover:bg-white/10 hover:border-white/20 active:scale-95"
         >
           <i className={`ph ${isExpanded ? 'ph-caret-up' : 'ph-caret-down'} text-xl group-hover:scale-110 transition-transform`}></i>
-          {isExpanded ? 'MINIMIZAR CERTIFICAÇÕES' : 'VER TODAS AS CERTIFICAÇÕES'}
+          {isExpanded ? t('certifications.minimize') : t('certifications.viewAll')}
         </button>
       </div>
 
       <div className="p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-600/10 to-purple-600/10 border border-white/10 text-center mt-8">
         <p className="text-lg italic text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          "Essas certificações são um reflexo da minha jornada de aprendizado contínuo e dedicação em melhorar tanto minha expertise técnica quanto habilidades interpessoais."
+          {t('certifications.quote')}
         </p>
       </div>
     </div>
